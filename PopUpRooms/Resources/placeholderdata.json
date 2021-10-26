@@ -1,0 +1,90 @@
+[
+    {
+        "roomId": "a3",
+        "room": 101,
+        "floor": 1,
+        "temperature": 20,
+        "co2": 28,
+        "status": true
+    },
+    {
+        "roomId": "b2",
+        "room": 302,
+        "floor": 3,
+        "temperature": 19,
+        "co2": 30,
+        "status": false
+    },
+    {
+        "roomId": "c1",
+        "room": 201,
+        "floor": 2,
+        "temperature": 22,
+        "co2": 40,
+        "status": true
+    },
+    {
+        "roomId": "d32",
+        "room": 303,
+        "floor": 3,
+        "temperature": 21,
+        "co2": 30,
+        "status": true
+    },
+    {
+        "roomId": "d2",
+        "room": 202,
+        "floor": 2,
+        "temperature": 20,
+        "co2": 32,
+        "status": true
+    },
+    {
+        "roomId": "e1",
+        "room": 203,
+        "floor": 2,
+        "temperature": 17,
+        "co2": 10,
+        "status": true
+    },
+    {
+        "roomId": "e3",
+        "room": 204,
+        "floor": 2,
+        "temperature": 17,
+        "co2": 10,
+        "status": false
+    },
+    {
+        "roomId": "e4",
+        "room": 304,
+        "floor": 3,
+        "temperature": 17,
+        "co2": 10,
+        "status": false
+    },
+    {
+        "roomId": "e74",
+        "room": 305,
+        "floor": 3,
+        "temperature": 19,
+        "co2": 10,
+        "status": true
+    },
+    {
+        "roomId": "e94",
+        "room": 401,
+        "floor": 4,
+        "temperature": 23,
+        "co2": 20,
+        "status": false
+    },
+    {
+        "roomId": "f14",
+        "room": 301,
+        "floor": 3,
+        "temperature": 26,
+        "co2": 22,
+        "status": false
+    }
+]
