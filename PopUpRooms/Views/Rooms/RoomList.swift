@@ -54,7 +54,23 @@ struct RoomList: View {
                         .padding()
                 }
             }
+            // This adds an animation for the expanding/collapsing of the list.
+            //.animation(.spring())
             .navigationTitle("Main Office")
         }
     }
 }
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ForEach(["iPhone 8"], id: \.self) { deviceName in
+
+            ContentView()
+                .previewDevice(PreviewDevice(rawValue: deviceName))
+                .environmentObject(RoomData())
+        }
+        
+    }
+}
+

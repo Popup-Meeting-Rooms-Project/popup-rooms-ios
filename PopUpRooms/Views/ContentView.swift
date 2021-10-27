@@ -19,14 +19,3 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForEach(["iPhone 8"], id: \.self) { deviceName in
-
-            ContentView()
-                .previewDevice(PreviewDevice(rawValue: deviceName))
-                .environmentObject(RoomData())
-        }
-        
-    }
-}

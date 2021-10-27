@@ -20,7 +20,10 @@ struct StarButton: View {
             // In Swift we can also use ternary operators for if-else.
             Image(systemName: isSet ? "star.fill" : "star")
                 .foregroundColor(isSet ? Color.yellow : .secondary)
+                // These are for the tapping animation.
+                .rotationEffect(.degrees(isSet ? 360 : 0))
+                //.scaleEffect(isSet ? 1.2 : 0.9)
+                .animation(.easeInOut(duration: 0.5))
         }
-        
     }
 }

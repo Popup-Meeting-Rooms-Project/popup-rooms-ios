@@ -36,14 +36,6 @@ struct RoomRow: View {
             Spacer()
             setStatusIcon(status: room.status)
             Spacer()
-            /*
-            if room.starred {
-                Image(systemName: "star.fill")
-                    .foregroundColor(Color.yellow)
-            } else {
-                Image(systemName: "star")
-                    .foregroundColor(.secondary)
-            }*/
             StarButton(isSet: $roomData.rooms[roomIndex].starred)
         }
         .imageScale(.large)
