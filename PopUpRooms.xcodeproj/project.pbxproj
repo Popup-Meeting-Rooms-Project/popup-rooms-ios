@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9483DB9927296F22003ABBBA /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483DB9827296F22003ABBBA /* StarButton.swift */; };
 		9498EE072726A311004B4D04 /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EE062726A311004B4D04 /* RoomList.swift */; };
 		949D11212728510B009BE868 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 949D11202728510B009BE868 /* .gitignore */; };
 		94A3D8AC2722E13000F7F75A /* PopUpRoomsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A3D8AB2722E13000F7F75A /* PopUpRoomsApp.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9483DB9827296F22003ABBBA /* StarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarButton.swift; sourceTree = "<group>"; };
 		9498EE062726A311004B4D04 /* RoomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomList.swift; sourceTree = "<group>"; };
 		949D11202728510B009BE868 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		94A3D8A82722E13000F7F75A /* PopUpRooms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopUpRooms.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +46,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9483DB9A272970C8003ABBBA /* Rooms */ = {
+			isa = PBXGroup;
+			children = (
+				94A3D8C62725776E00F7F75A /* RoomRow.swift */,
+				9498EE062726A311004B4D04 /* RoomList.swift */,
+			);
+			path = Rooms;
+			sourceTree = "<group>";
+		};
+		9483DB9B272970D4003ABBBA /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9483DB9827296F22003ABBBA /* StarButton.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		94A3D89F2722E13000F7F75A = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +121,9 @@
 		94A3D8C52725772200F7F75A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9483DB9B272970D4003ABBBA /* Helpers */,
+				9483DB9A272970C8003ABBBA /* Rooms */,
 				94A3D8AD2722E13000F7F75A /* ContentView.swift */,
-				94A3D8C62725776E00F7F75A /* RoomRow.swift */,
-				9498EE062726A311004B4D04 /* RoomList.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -187,6 +206,7 @@
 				94A3D8BA2722E2C000F7F75A /* Room.swift in Sources */,
 				94A3D8C02724444D00F7F75A /* RoomData.swift in Sources */,
 				94A3D8C72725776E00F7F75A /* RoomRow.swift in Sources */,
+				9483DB9927296F22003ABBBA /* StarButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

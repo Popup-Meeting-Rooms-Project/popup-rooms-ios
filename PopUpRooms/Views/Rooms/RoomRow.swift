@@ -7,7 +7,9 @@
 
 import SwiftUI
 
+// This creates an icon for displaying room status. Could later be moved into own helper file.
 @ViewBuilder func setStatusIcon(status: Bool) -> some View {
+    
     if status {
         Image(systemName: "circle.fill")
             .foregroundColor(Color.green)
@@ -18,7 +20,13 @@ import SwiftUI
 }
 
 struct RoomRow: View {
+    
+    @EnvironmentObject var roomData: RoomData
     var room: Room
+    
+    var roomIndex: Int {
+        roomData.rooms.firstIndex(where: { $0.id == room.id })!
+    }
     
     var body: some View {
         HStack {
@@ -28,14 +36,15 @@ struct RoomRow: View {
             Spacer()
             setStatusIcon(status: room.status)
             Spacer()
+            /*
             if room.starred {
                 Image(systemName: "star.fill")
                     .foregroundColor(Color.yellow)
             } else {
                 Image(systemName: "star")
                     .foregroundColor(.secondary)
-                
-            }
+            }*/
+            StarButton(isSet: $roomData.rooms[roomIndex].starred)
         }
         .imageScale(.large)
     }
