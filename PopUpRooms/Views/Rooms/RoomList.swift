@@ -7,6 +7,21 @@
 
 import SwiftUI
 
+struct ListHeader: View {
+    var body: some View {
+        HStack {
+            Text("Room")
+            Spacer()
+            Text("Floor")
+            Spacer()
+            Text("Status")
+            Spacer()
+            Text("Favorite")
+        }
+        .font(.headline)
+    }
+}
+
 struct RoomList: View {
     // To subscribe to changes, room data is added as an Environment Object.
     @EnvironmentObject var roomData: RoomData
@@ -48,15 +63,19 @@ struct RoomList: View {
                     Text("Show Available only")
                 }
                 
+                ListHeader()
+                
                 //RoomRow(room: Room(id:"a3",roomNo:101,floor:1,status:true))   USED FOR DEBUGGING
                 ForEach(filteredRooms) { room in
                     RoomRow(room: room)
-                        .padding()
                 }
             }
+            // We change the style of the list to fit better our sketches.
+            .listStyle(.inset)
             // This adds an animation for the expanding/collapsing of the list.
             //.animation(.spring())
             .navigationTitle("Main Office")
+            //.navigationBarHidden(true)
         }
     }
 }
@@ -64,12 +83,11 @@ struct RoomList: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ForEach(["iPhone 8"], id: \.self) { deviceName in
+        ForEach(["iPhone 12"], id: \.self) { deviceName in
 
             ContentView()
                 .previewDevice(PreviewDevice(rawValue: deviceName))
-                .environmentObject(RoomData())
-        }
+                .environmentObject(RoomData())        }
         
     }
 }

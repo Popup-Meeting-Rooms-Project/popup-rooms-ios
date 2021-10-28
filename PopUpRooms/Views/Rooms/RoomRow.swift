@@ -38,6 +38,7 @@ struct RoomRow: View {
             Spacer()
             StarButton(isSet: $roomData.rooms[roomIndex].starred)
         }
+        .padding(.leading, 10).padding(.trailing, 15)
         .imageScale(.large)
     }
 }

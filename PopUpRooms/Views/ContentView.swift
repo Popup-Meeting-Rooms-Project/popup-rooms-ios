@@ -11,11 +11,9 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("Pop Up Meeting Rooms")
-                .font(.title)
-                .padding(EdgeInsets(top:20,leading:0,bottom:0,trailing:0))
+            Header()
+            
             RoomList()
         }
     }
 }
-

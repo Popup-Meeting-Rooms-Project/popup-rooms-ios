@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		9483DB9927296F22003ABBBA /* StarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483DB9827296F22003ABBBA /* StarButton.swift */; };
+		9483DB9D272A9B2B003ABBBA /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9483DB9C272A9B2B003ABBBA /* Header.swift */; };
 		9498EE072726A311004B4D04 /* RoomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9498EE062726A311004B4D04 /* RoomList.swift */; };
 		949D11212728510B009BE868 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 949D11202728510B009BE868 /* .gitignore */; };
 		94A3D8AC2722E13000F7F75A /* PopUpRoomsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94A3D8AB2722E13000F7F75A /* PopUpRoomsApp.swift */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		9483DB9827296F22003ABBBA /* StarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarButton.swift; sourceTree = "<group>"; };
+		9483DB9C272A9B2B003ABBBA /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		9498EE062726A311004B4D04 /* RoomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomList.swift; sourceTree = "<group>"; };
 		949D11202728510B009BE868 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		94A3D8A82722E13000F7F75A /* PopUpRooms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PopUpRooms.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +126,7 @@
 				9483DB9B272970D4003ABBBA /* Helpers */,
 				9483DB9A272970C8003ABBBA /* Rooms */,
 				94A3D8AD2722E13000F7F75A /* ContentView.swift */,
+				9483DB9C272A9B2B003ABBBA /* Header.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9483DB9D272A9B2B003ABBBA /* Header.swift in Sources */,
 				94A3D8AE2722E13000F7F75A /* ContentView.swift in Sources */,
 				9498EE072726A311004B4D04 /* RoomList.swift in Sources */,
 				94A3D8AC2722E13000F7F75A /* PopUpRoomsApp.swift in Sources */,
