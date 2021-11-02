@@ -28,17 +28,11 @@ struct RoomList: View {
     
     @State private var showFavsOnly = false
     @State private var showAvailableOnly = false
-    @State private var isSorted = false
     
     
     // This function will handle the sorting and filtering of the rows to be displayed.
     var filteredRooms: [Room] {
-        var rooms = roomData.rooms
-        
-        if (!isSorted) {
-            rooms.sort { $0.roomNo < $1.roomNo }
-            isSorted = true
-        }
+        let rooms = roomData.rooms
         
         if (showFavsOnly) {
             return rooms.filter {room in
@@ -53,6 +47,7 @@ struct RoomList: View {
         }
     }
     
+    
     var body: some View {
         NavigationView {
             List {
@@ -63,19 +58,25 @@ struct RoomList: View {
                     Text("Show Available only")
                 }
                 
-                ListHeader()
-                
-                //RoomRow(room: Room(id:"a3",roomNo:101,floor:1,status:true))   USED FOR DEBUGGING
-                ForEach(filteredRooms) { room in
-                    RoomRow(room: room)
+                Section {
+                    //RoomRow(room: Room(id:"a3",roomNo:101,floor:1,status:true))   USED FOR DEBUGGING
+                    ForEach(filteredRooms) { room in
+                        RoomRow(room: room)
+                    }
+                } header: {
+                    ListHeader()
                 }
             }
+            .padding(.top, 20).padding(.bottom, 20)
             // We change the style of the list to fit better our sketches.
             .listStyle(.inset)
+            
             // This adds an animation for the expanding/collapsing of the list.
-            //.animation(.spring())
+            .animation(.spring())
+            
+            // Here we set the title (and styling).
             .navigationTitle("Main Office")
-            //.navigationBarHidden(true)
+            //.navigationBarTitle("", displayMode: .inline)
         }
     }
 }
@@ -91,4 +92,3 @@ struct ContentView_Previews: PreviewProvider {
         
     }
 }
-

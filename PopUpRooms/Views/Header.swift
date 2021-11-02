@@ -18,7 +18,6 @@ struct Header: View {
                 .resizable()
                 .scaledToFill()
                 //.aspectRatio(contentMode: .fill)  This does the same thing.
-                //.padding(.top, 50)
             
             Text("Pop Up Meeting Rooms")
                 .font(.title)
