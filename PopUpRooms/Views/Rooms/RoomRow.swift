@@ -10,7 +10,7 @@ import SwiftUI
 // This creates an icon for displaying room status. Could later be moved into own helper file.
 @ViewBuilder func setStatusIcon(status: Bool) -> some View {
     
-    if status {
+    if !status {
         Image(systemName: "circle.fill")
             .foregroundColor(Color.green)
     } else {

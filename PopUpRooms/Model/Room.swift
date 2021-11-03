@@ -10,7 +10,7 @@ import Foundation
 struct Room : Identifiable, Codable {
     
     //var id = UUID()       NOT USED ATM
-    var id: String
+    var id: Int
     let roomNo: Int
     let floor: Int
     var status: Bool
@@ -18,15 +18,16 @@ struct Room : Identifiable, Codable {
     
     // This helps "translate" our object properties to those of the JSON data provided, to avoid mismatches.
     private enum CodingKeys: String, CodingKey {
-        case id = "roomId"
-        case roomNo = "room"
-        case floor, status, starred
+        case roomNo = "room_number"
+        case status = "detected"
+        case floor = "building_floor"
+        case id, starred
     }
     
     // This custom init helps set the starred property, which isn't included in the JSON data.
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
-        self.id = try container.decode(String.self, forKey: .id)
+        self.id = try container.decode(Int.self, forKey: .id)
         self.roomNo = try container.decode(Int.self, forKey: .roomNo)
         self.floor = try container.decode(Int.self, forKey: .floor)
         self.status = try container.decode(Bool.self, forKey: .status)

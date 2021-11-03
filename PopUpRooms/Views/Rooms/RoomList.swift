@@ -66,6 +66,7 @@ struct RoomList: View {
                 } header: {
                     ListHeader()
                 }
+                
             }
             .padding(.top, 20).padding(.bottom, 20)
             // We change the style of the list to fit better our sketches.
@@ -77,7 +78,10 @@ struct RoomList: View {
             // Here we set the title (and styling).
             .navigationTitle("Main Office")
             //.navigationBarTitle("", displayMode: .inline)
+            
         }
+        // At first load, we fetch data from our Back End to populate the list.
+        .onAppear() { roomData.fetchRooms() }
     }
 }
 
