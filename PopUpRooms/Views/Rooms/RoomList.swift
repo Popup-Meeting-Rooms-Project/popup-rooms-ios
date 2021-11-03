@@ -36,11 +36,11 @@ struct RoomList: View {
         
         if (showFavsOnly) {
             return rooms.filter {room in
-                room.starred && (!showAvailableOnly || room.status)
+                room.starred && (!showAvailableOnly || !room.status)
           }
         } else if (showAvailableOnly) {
             return rooms.filter { room in
-                room.status && (!showFavsOnly || room.starred)
+                !room.status && (!showFavsOnly || room.starred)
             }
         } else {
             return rooms
@@ -77,11 +77,14 @@ struct RoomList: View {
             
             // Here we set the title (and styling).
             .navigationTitle("Main Office")
-            //.navigationBarTitle("", displayMode: .inline)
             
         }
+        // Fixes some warnings on XCode (Apple bug?).
+        .navigationViewStyle(.stack)
+        
         // At first load, we fetch data from our Back End to populate the list.
         .onAppear() { roomData.fetchRooms() }
+        
     }
 }
 

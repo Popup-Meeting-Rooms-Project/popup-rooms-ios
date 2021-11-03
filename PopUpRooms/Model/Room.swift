@@ -11,14 +11,14 @@ struct Room : Identifiable, Codable {
     
     //var id = UUID()       NOT USED ATM
     var id: Int
-    let roomNo: Int
+    let roomName: String
     let floor: Int
     var status: Bool
     var starred: Bool
     
     // This helps "translate" our object properties to those of the JSON data provided, to avoid mismatches.
     private enum CodingKeys: String, CodingKey {
-        case roomNo = "room_number"
+        case roomName = "room_name"
         case status = "detected"
         case floor = "building_floor"
         case id, starred
@@ -28,7 +28,7 @@ struct Room : Identifiable, Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(Int.self, forKey: .id)
-        self.roomNo = try container.decode(Int.self, forKey: .roomNo)
+        self.roomName = try container.decode(String.self, forKey: .roomName)
         self.floor = try container.decode(Int.self, forKey: .floor)
         self.status = try container.decode(Bool.self, forKey: .status)
         // Here we use the method decodeIfPresent instead
