@@ -30,11 +30,11 @@ struct RoomRow: View {
     
     var body: some View {
         HStack {
-            Text("\(room.roomNo)")
+            Text("\(room.roomName)")
             Spacer()
             Text("\(room.floor)")
             Spacer()
-            setStatusIcon(status: room.status)
+            setStatusIcon(status: room.busy)
             Spacer()
             StarButton(isSet: $roomData.rooms[roomIndex].starred)
         }

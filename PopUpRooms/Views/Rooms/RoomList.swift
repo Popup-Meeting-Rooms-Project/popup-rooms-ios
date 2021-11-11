@@ -25,6 +25,8 @@ struct ListHeader: View {
 struct RoomList: View {
     // To subscribe to changes, room data is added as an Environment Object.
     @EnvironmentObject var roomData: RoomData
+    // Scene Phase Environment values are are used to tell the current state (e.g. when it becomes inactive).
+    @Environment(\.scenePhase) private var scenePhase
     
     @State private var showFavsOnly = false
     @State private var showAvailableOnly = false
@@ -36,11 +38,11 @@ struct RoomList: View {
         
         if (showFavsOnly) {
             return rooms.filter {room in
-                room.starred && (!showAvailableOnly || !room.status)
+                room.starred && (!showAvailableOnly || !room.busy)
           }
         } else if (showAvailableOnly) {
             return rooms.filter { room in
-                !room.status && (!showFavsOnly || room.starred)
+                !room.busy && (!showFavsOnly || room.starred)
             }
         } else {
             return rooms
@@ -83,7 +85,12 @@ struct RoomList: View {
         .navigationViewStyle(.stack)
         
         // At first load, we fetch data from our Back End to populate the list.
-        .onAppear() { roomData.fetchRooms() }
+        .onAppear() { roomData.load() }
+        
+        // This observes the scenePhase value.
+        .onChange(of: scenePhase) { phase in
+            if phase == .inactive { roomData.saveFavorites() }
+        }
         
     }
 }
