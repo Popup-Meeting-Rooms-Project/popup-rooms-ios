@@ -11,6 +11,7 @@ struct ListHeader: View {
     var body: some View {
         HStack {
             Text("Room")
+                .frame(width: 90)
             Spacer()
             Text("Floor")
             Spacer()
@@ -91,18 +92,6 @@ struct RoomList: View {
         .onChange(of: scenePhase) { phase in
             if phase == .inactive { roomData.saveFavorites() }
         }
-        
-    }
-}
-
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ForEach(["iPhone 12"], id: \.self) { deviceName in
-
-            ContentView()
-                .previewDevice(PreviewDevice(rawValue: deviceName))
-                .environmentObject(RoomData())        }
         
     }
 }

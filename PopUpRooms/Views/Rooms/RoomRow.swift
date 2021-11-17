@@ -31,6 +31,7 @@ struct RoomRow: View {
     var body: some View {
         HStack {
             Text("\(room.roomName)")
+                .frame(width: 90)
             Spacer()
             Text("\(room.floor)")
             Spacer()
@@ -40,5 +41,17 @@ struct RoomRow: View {
         }
         .padding(.leading, 10).padding(.trailing, 15)
         .imageScale(.large)
+    }
+}
+
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ForEach(["iPhone 12"], id: \.self) { deviceName in
+
+            ContentView()
+                .previewDevice(PreviewDevice(rawValue: deviceName))
+                .environmentObject(RoomData())
+        }
     }
 }

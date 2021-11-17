@@ -70,6 +70,12 @@ final class RoomData: ObservableObject {
                     let outfile = getFileURL()
                     try data.write(to: outfile)
                 } catch { fatalError("Can't write to file") }
+            } else {
+                // If no favorites selected, save an empty Set.
+                do {
+                    let outfile = getFileURL()
+                    try JSONEncoder().encode(Set<Int>()).write(to: outfile)
+                } catch { fatalError("Can't write to file") }
             }
         }
     }
@@ -114,7 +120,8 @@ func loadLocalData(completionHandler:@escaping (Set<Int>?, Error?) -> ()) {
         guard let data = try? Data(contentsOf: fileURL) else { return }
         
         guard let favoriteRooms = try? JSONDecoder().decode(Set<Int>.self, from: data) else {
-            fatalError("Can't decode saved room favorites data.")
+            print("Can't decode saved room favorites data. Is it first run?")  // FOR DEBUGGING
+            return
         }
         
         completionHandler(favoriteRooms, nil)
