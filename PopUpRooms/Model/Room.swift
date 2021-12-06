@@ -31,9 +31,9 @@ struct Room : Identifiable, Codable {
         self.roomName = try container.decodeIfPresent(String.self, forKey: .roomName) ?? "Room"
         self.floor = try container.decode(Int.self, forKey: .floor)
         self.busy = try container.decode(Bool.self, forKey: .busy)
-        // Here we use the method decodeIfPresent instead
-        //self.starred = try container.decodeIfPresent(Bool.self, forKey: .starred) ?? false
-        self.starred = false
+        // Here we use the method decodeIfPresent instead, so it works with our placeholder data used for widget snapshots.
+        self.starred = try container.decodeIfPresent(Bool.self, forKey: .starred) ?? false
+        //self.starred = false
         
     }
 }

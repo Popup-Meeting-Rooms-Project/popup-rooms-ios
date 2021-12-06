@@ -78,7 +78,7 @@ struct RoomList: View {
                 .animation(.spring())
                 
                 // This allows pulldown to refresh
-                .refreshable { roomData.load()}
+                .refreshable { roomData.load() }
                 
                 // Here we set the title (and styling).
                 .navigationTitle("Main Office")
