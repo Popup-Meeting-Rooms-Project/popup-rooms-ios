@@ -10,12 +10,21 @@ import Combine
 
 // These are the URLs of our Back End endpoints (we force-unwrap it, since we will be adding it ourselves).
 private let apiURL = URL(string: "")!
-private let sseURL = URL(string: "")!
 
-// This function returns the URL of a file "favoriteRooms.data" from the user's Documents folder.
+// This function returns the URL of a file "favoriteRooms.data" from the user's Documents folder. Used for app only! (no extensions, like widgets).
 func getFileURL() -> URL {
-    guard let documentsFolder: URL = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { fatalError("Can't find documents directory.") }
+    guard let documentsFolder: URL =
+        try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) else { fatalError("Can't find documents directory.") }
     return documentsFolder.appendingPathComponent("favoriteRooms.data")
+}
+
+// This extension is used to access shared data across the app group.
+extension FileManager {
+  static func sharedContainerURL() -> URL {
+    return FileManager.default.containerURL(
+      forSecurityApplicationGroupIdentifier: "" // This should not be in source control/GitHub.
+    )!
+  }
 }
 
 
@@ -38,7 +47,7 @@ final class RoomData: ObservableObject {
                 DispatchQueue.main.async {
                     self.rooms = parsed
                     
-                    // We load the local data now, to ensure the right order of loading. (TEST!!)
+                    // We load the local data now, to ensure the right order of loading.
                     loadLocalData() { (favoriteRooms, error) in
                         if let error = error { print(error) }
                         
@@ -67,7 +76,8 @@ final class RoomData: ObservableObject {
                 guard let data = try? JSONEncoder().encode(favoriteIds) else { fatalError("Error encoding data") }
                 
                 do {
-                    let outfile = getFileURL()
+                    //let outfile = getFileURL()
+                    let outfile = FileManager.sharedContainerURL().appendingPathComponent("favoriteRooms.data")
                     try data.write(to: outfile)
                 } catch { fatalError("Can't write to file") }
             } else {
@@ -115,7 +125,8 @@ func loadDataFromAPI(completionHandler:@escaping ([Room]?, Error?) -> ()) {
 func loadLocalData(completionHandler:@escaping (Set<Int>?, Error?) -> ()) {
     
     DispatchQueue.global(qos: .background).async {
-        let fileURL = getFileURL()
+        //let fileURL = getFileURL()
+        let fileURL = FileManager.sharedContainerURL().appendingPathComponent("favoriteRooms.data")
         
         guard let data = try? Data(contentsOf: fileURL) else { return }
         

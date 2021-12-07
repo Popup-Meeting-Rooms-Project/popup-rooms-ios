@@ -30,10 +30,10 @@ struct RoomRow: View {
     
     var body: some View {
         HStack {
+            Text("\(room.floor)")
+            Spacer()
             Text("\(room.roomName)")
                 .frame(width: 90)
-            Spacer()
-            Text("\(room.floor)")
             Spacer()
             setStatusIcon(status: room.busy)
             Spacer()
